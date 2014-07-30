@@ -1,21 +1,4 @@
-#########################################################
-# Common definitions (CUSTOM)
-#########################################################
-ifndef IPHONE_MODE
-IPHONE_MODE	     = no
-endif
-ifndef MINGW32_MODE
-MINGW32_MODE         = no
-endif
-ifndef USE_NDS
-USE_NDS              = no
-endif
-ifndef USE_ANDROID
-USE_ANDROID          = no
-endif
-ifndef USE_LINUX
-USE_LINUX            = no
-endif
+USE_LINUX            = yes
 ifndef PROJECT
 # set default to ardrone2 for video TCP com.
 PROJECT              = ardrone2

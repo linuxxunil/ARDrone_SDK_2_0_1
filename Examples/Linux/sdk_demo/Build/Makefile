@@ -2,13 +2,8 @@ SDK_PATH:=$(shell pwd)/../../../../ARDroneLib
 PC_TARGET=yes
 USE_LINUX=yes
 
-ifdef MYKONOS
-   include $(ARDRONE_CUSTOM_CONFIG)
-   include $(ARDRONE_BUILD_CONFIG)
-else
-   include $(SDK_PATH)/Soft/Build/custom.makefile
-   include $(SDK_PATH)/Soft/Build/config.makefile
-endif
+include $(SDK_PATH)/Soft/Build/custom.makefile
+include $(SDK_PATH)/Soft/Build/config.makefile
 
 ifeq "$(RELEASE_BUILD)" "yes"
    ARDRONE_TARGET_DIR=$(shell pwd)/../../Build/Release
@@ -67,7 +62,7 @@ export GENERIC_LIBRARY_SOURCE_DIR=$(GENERIC_BINARIES_SOURCE_DIR)
 all: build_libs $(TARGET)
 
 $(TARGET):
-	@$(MAKE) -C $(SDK_PATH)/VP_SDK/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS) USE_LINUX=yes
+	$(MAKE) -C $(SDK_PATH)/VP_SDK/Build $(TMP_SDK_FLAGS) $(SDK_FLAGS) $(MAKECMDGOALS) USE_LINUX=yes
 	mv $(ARDRONE_TARGET_DIR)/ardrone_testing_tool $(TARGET)
 	mv $(TARGET) $(ARDRONE_TARGET_DIR)/
 

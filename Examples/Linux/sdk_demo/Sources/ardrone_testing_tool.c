@@ -44,6 +44,15 @@ C_RESULT ardrone_tool_init_custom(void)
   return C_OK;
 }
 
+C_RESULT ardrone_tool_update_custom (void)
+{
+	static int a = 0;
+		ardrone_tool_set_ui_pad_start(1);
+	if ( a++ > 100000 )
+		ardrone_tool_set_ui_pad_start(0);
+	return C_OK;
+}
+
 /* The delegate object calls this method when the event loop exit */
 C_RESULT ardrone_tool_shutdown_custom(void)
 {
