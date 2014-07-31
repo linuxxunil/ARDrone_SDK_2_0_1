@@ -20,6 +20,7 @@
 #include <VP_Os/vp_os_print.h>
 #include <VP_Api/vp_api_thread_helper.h>
 #include <VP_Os/vp_os_signal.h>
+#include <VP_Os/vp_os_delay.h>
 
 //Local project
 #include <Video/video_stage.h>
@@ -46,10 +47,17 @@ C_RESULT ardrone_tool_init_custom(void)
 
 C_RESULT ardrone_tool_update_custom (void)
 {
-	static int a = 0;
-		ardrone_tool_set_ui_pad_start(1);
-	if ( a++ > 100000 )
-		ardrone_tool_set_ui_pad_start(0);
+	static int a=0;
+		
+	printf("%d\n",a);
+	if ( ++a < 200 ) {
+	ardrone_tool_set_ui_pad_start(1);
+	} else {
+	
+		ardrone_tool_input_start_reset();
+	
+	}
+	
 	return C_OK;
 }
 
